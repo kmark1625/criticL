@@ -1,49 +1,55 @@
-<p id="notice"><%= notice %></p>
+ <div class="row">
+  <div class="sidebar col-md-3">
+    <p>
+      <img class="poster show" src="/images/<%=@movie.poster_url.split("/")[-1] %>">
+    </p>
+  </div>
 
-<p>
-  <strong>Title:</strong>
-  <%= @movie.title %>
-</p>
+  <div class="sidebar col-md-8 box">
+    <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Release date:</strong>
-  <%= @movie.release_date %>
-</p>
+    <p>
+      <strong>Title:</strong>
+      <%= @movie.title %>
+    </p>
 
-<p>
-  <strong>Runtime:</strong>
-  <%= @movie.runtime %>
-</p>
+    <p>
+      <strong>Release date:</strong>
+      <%= @movie.release_date %>
+    </p>
 
-<p>
-  <strong>Director:</strong>
-  <%= @movie.director %>
-</p>
+    <p>
+      <strong>Runtime:</strong>
+      <%= @movie.runtime %>
+    </p>
 
-<p>
-  <strong>Cast:</strong>
-  <%= @movie.cast %>
-</p>
+    <p>
+      <strong>Director:</strong>
+      <%= @movie.director %>
+    </p>
 
-<p>
-  <strong>Poster url:</strong>
-  <%= @movie.poster_url %>
-</p>
+    <p>
+      <strong>Cast:</strong>
+      <%= @movie.cast %>
+    </p>
 
-<p>
-  <strong>Avg rating:</strong>
-  <%= @movie.avg_rating %>
-</p>
+    <p>
+      <strong>Avg rating:</strong>
+      <%= @movie.avg_rating %>
+    </p>
 
-<p>
-  <strong>Summary:</strong>
-  <%= @movie.summary %>
-</p>
+    <p>
+      <strong>Summary:</strong>
+      <%= @movie.summary %>
+    </p>
 
-<p>
-  <strong>Creator:</strong>
-  <%= @movie.creator_id %>
-</p>
+    <p>
+      <strong>Creator:</strong>
+      <%= @movie.creator_id %>
+    </p>
 
-<%= link_to 'Edit', edit_movie_path(@movie) %> |
-<%= link_to 'Back', movies_path %>
+    <%= link_to 'Edit', edit_movie_path(@movie) %> |
+    <%= link_to 'Back', movies_path %>
+  </div>
+
+</div>
