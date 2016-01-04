@@ -1,24 +1,37 @@
-<p id="notice"><%= notice %></p>
+<div class="container">
+  <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Username:</strong>
-  <%= @user.username %>
-</p>
+  <p>
+    <strong>Username:</strong>
+    <%= @user.username %>
+  </p>
 
-<p>
-  <strong>Email:</strong>
-  <%= @user.email %>
-</p>
+  <p>
+    <strong>Email:</strong>
+    <%= @user.email %>
+  </p>
 
-<p>
-  <strong>Password:</strong>
-  <%= @user.password %>
-</p>
+  <p>
+    <strong>Rating:</strong>
+    <%= @user.upvotes %>
+  </p>
 
-<p>
-  <strong>Upvotes:</strong>
-  <%= @user.upvotes %>
-</p>
+  <div class="panel panel-default">
+    <h4>Top Reviews</h4>
+    <% if @user.reviews %>
+      <% @user.reviews.each do |review| %>
+        <div class="panel panel-default">
+          <strong><%= link_to "#{review.movie.title}", movie_path(review.movie) %></strong><br>
+          <strong><%= link_to "#{review.title}", review_path(review) %></strong>
+          <p><%= truncate(review.content, length:50)%></p>
+          <p>Rating: <%= review.rating %> </p>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
 
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %>
+  <% if @user.id == session[:user_id] %>
+    <%= link_to 'Edit', edit_user_path(@user) %> |
+  <% end %>
+  <%= link_to 'Back', root_path %>
+</div>

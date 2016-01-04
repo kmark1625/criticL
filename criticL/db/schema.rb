@@ -60,7 +60,6 @@ ActiveRecord::Schema.define(version: 20160104165632) do
     t.integer  "upvotes",         default: 0
     t.datetime "created_at",                  null: false
     t.datetime "updated_at",                  null: false
-
   end
 
   create_table "votes", force: :cascade do |t|
