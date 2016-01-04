@@ -9,13 +9,13 @@ class SessionsController < ApplicationController
     session[:user_id] = @user.id
     redirect_to @user
     else
-      flash[:danger] "Login information not found"
+      # flash[:danger] "Login information not found"
       render 'new'
     end
   end
 
   def destroy
-    session[:user_id].destroy
-    render "root"
+    session[:user_id] = nil
+    render "new"
   end
 end
