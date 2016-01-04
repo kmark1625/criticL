@@ -10,14 +10,15 @@
   <nav class="navbar navbar-inverse">
     <div class="container-fluid">
       <div class="navbar-header">
-        <a class="navbar-brand" href="#">criticL</a>
+        <a class="navbar-brand" href="/movies">criticL</a>
       </div>
       <ul class="nav navbar-nav">
-        <li class="active"><a href="#">Home</a></li>
+        <li class="active"><a href="/login">Login</a></li>
+        <li><a href="/users/new">Register</a></li>
+        <% if session[:user_id] %>
+          <li><%= link_to "Log Out", logout_path, method: :delete %></li>
+        <% end %>
       </ul>
-      <% if session[:user_id] %>
-        <%= link_to "Log Out", logout_path, method: :delete %>
-      <% end %>
     </div>
   </nav>
   <%= yield %>
