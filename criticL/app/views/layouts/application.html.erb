@@ -16,7 +16,11 @@
         <li class="active"><a href="#">Home</a></li>
       </ul>
       <% if session[:user_id] %>
-        <%= link_to "Log Out", logout_path, method: :delete %>
+        <li class="active"><%= link_to "Log Out", logout_path, method: :delete %></li>
+        <li class="active">Hello user!</li>
+      <% else %>
+        <li class="active"><%= link_to "Log In", login_path%></li>
+        <li class="active"><%= link_to "Register", new_user_path%></li>
       <% end %>
     </div>
   </nav>
