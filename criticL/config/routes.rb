@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+  resources :votes
+  resources :users
+  resources :reviews
+  resources :movies
+  resources :classifications
+  resources :genres
   get 'welcome/index'
 
   # The priority is based upon order of creation: first created -> highest priority.
