@@ -4,6 +4,9 @@ Rails.application.routes.draw do
   resources :reviews
   resources :movies
   resources :genres, only: [:index, :show]
+  get "login" => "sessions#new"
+  post "login" => "sessions#create"
+  delete "logout" => "sessions#destroy"
   get 'welcome/index'
 
   # The priority is based upon order of creation: first created -> highest priority.
