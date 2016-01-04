@@ -16,8 +16,11 @@ action = Genre.create(name: "Action")
 movie = JSON.parse('{"Title":"The Martian","Year":"2015","Rated":"PG-13","Released":"02 Oct 2015","Runtime":"144 min","Genre":"Adventure, Drama, Sci-Fi","Director":"Ridley Scott","Writer":"Drew Goddard (screenplay), Andy Weir (book)","Actors":"Matt Damon, Jessica Chastain, Kristen Wiig, Jeff Daniels","Plot":"During a manned mission to Mars, Astronaut Mark Watney is presumed dead after a fierce storm and left behind by his crew. But Watney has survived and finds himself stranded and alone on the hostile planet. With only meager supplies, he must draw upon his ingenuity, wit and spirit to subsist and find a way to signal to Earth that he is alive.","Language":"English, Mandarin","Country":"USA, UK","Awards":"Nominated for 3 Golden Globes. Another 8 wins & 14 nominations.","Poster":"http://ia.media-imdb.com/images/M/MV5BMTc2MTQ3MDA1Nl5BMl5BanBnXkFtZTgwODA3OTI4NjE@._V1_SX300.jpg","Metascore":"80","imdbRating":"8.2","imdbVotes":"187,881","imdbID":"tt3659388","Type":"movie","Response":"True"}')
 
 created_movie = Movie.create(title: movie["Title"], release_date: movie["Released"], runtime: movie["Runtime"], director: movie["Director"], cast: movie["Actors"], poster_url: movie["Poster"], summary: movie["Plot"])
-
-# wget created_move["poster_url"]
+puts "wget #{created_movie['poster_url']}"
+# puts command
+# exec("cd public/images/")
+# exec("pwd >&2")
+# exec("#{command}")
 
 created_movie.genres << adventure << scifi
 
@@ -25,11 +28,15 @@ movie = JSON.parse('{"Title":"Zoolander","Year":"2001","Rated":"PG-13","Released
 
 created_movie = Movie.create(title: movie["Title"], release_date: movie["Released"], runtime: movie["Runtime"], director: movie["Director"], cast: movie["Actors"], poster_url: movie["Poster"], summary: movie["Plot"])
 
+puts "wget #{created_movie['poster_url']}"
+
 created_movie.genres << comedy
 
 movie = JSON.parse('{"Title":"The Hangover","Year":"2009","Rated":"R","Released":"05 Jun 2009","Runtime":"100 min","Genre":"Comedy","Director":"Todd Phillips","Writer":"Jon Lucas, Scott Moore","Actors":"Bradley Cooper, Ed Helms, Zach Galifianakis, Justin Bartha","Plot":"Three buddies wake up from a bachelor party in Las Vegas, with no memory of the previous night and the bachelor missing. They make their way around the city in order to find their friend before his wedding.","Language":"English","Country":"USA, Germany","Awards":"Won 1 Golden Globe. Another 9 wins & 26 nominations.","Poster":"http://ia.media-imdb.com/images/M/MV5BMTU1MDA1MTYwMF5BMl5BanBnXkFtZTcwMDcxMzA1Mg@@._V1_SX300.jpg","Metascore":"73","imdbRating":"7.8","imdbVotes":"550,216","imdbID":"tt1119646","Type":"movie","Response":"True"}')
 
 created_movie = Movie.create(title: movie["Title"], release_date: movie["Released"], runtime: movie["Runtime"], director: movie["Director"], cast: movie["Actors"], poster_url: movie["Poster"], summary: movie["Plot"])
+
+puts "wget #{created_movie['poster_url']}"
 
 created_movie.genres << comedy
 
@@ -37,10 +44,14 @@ movie = JSON.parse('{"Title":"It Follows","Year":"2014","Rated":"R","Released":"
 
 created_movie = Movie.create(title: movie["Title"], release_date: movie["Released"], runtime: movie["Runtime"], director: movie["Director"], cast: movie["Actors"], poster_url: movie["Poster"], summary: movie["Plot"])
 
+puts "wget #{created_movie['poster_url']}"
+
 created_movie.genres << horror
 
 movie = JSON.parse('{"Title":"Mad Max: Fury Road","Year":"2015","Rated":"R","Released":"15 May 2015","Runtime":"120 min","Genre":"Action, Adventure, Sci-Fi","Director":"George Miller","Writer":"George Miller, Brendan McCarthy, Nick Lathouris","Actors":"Tom Hardy, Charlize Theron, Nicholas Hoult, Hugh Keays-Byrne","Plot":"A woman rebels against a tyrannical ruler in post apocalyptic Australia in search for her homeland with the help of a group of female prisoners, a psychotic worshiper, and a drifter named Max.","Language":"English, Russian","Country":"Australia, USA","Awards":"Nominated for 2 Golden Globes. Another 16 wins & 23 nominations.","Poster":"http://ia.media-imdb.com/images/M/MV5BMTUyMTE0ODcxNF5BMl5BanBnXkFtZTgwODE4NDQzNTE@._V1_SX300.jpg","Metascore":"89","imdbRating":"8.2","imdbVotes":"388,606","imdbID":"tt1392190","Type":"movie","Response":"True"}')
 
 created_movie = Movie.create(title: movie["Title"], release_date: movie["Released"], runtime: movie["Runtime"], director: movie["Director"], cast: movie["Actors"], poster_url: movie["Poster"], summary: movie["Plot"])
+
+puts "wget #{created_movie['poster_url']}"
 
 created_movie.genres << action
