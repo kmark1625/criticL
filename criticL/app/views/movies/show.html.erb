@@ -1,3 +1,7 @@
+<p>
+  <img class="poster" src="/images/<%=@movie.poster_url.split("/")[-1] %>">
+</p>
+
 <p id="notice"><%= notice %></p>
 
 <p>
@@ -23,11 +27,6 @@
 <p>
   <strong>Cast:</strong>
   <%= @movie.cast %>
-</p>
-
-<p>
-  <strong>Poster url:</strong>
-  <%= @movie.poster_url %>
 </p>
 
 <p>
