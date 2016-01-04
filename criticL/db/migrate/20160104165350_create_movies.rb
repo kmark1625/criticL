@@ -6,7 +6,7 @@ class CreateMovies < ActiveRecord::Migration
       t.string :runtime
       t.string :director
       t.string :cast
-      t.string :poster_url
+      t.text :poster_url
       t.decimal :avg_rating
       t.text :summary
       t.integer :creator_id
