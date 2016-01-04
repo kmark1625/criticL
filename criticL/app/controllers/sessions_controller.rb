@@ -1,5 +1,6 @@
 class SessionsController < ApplicationController
   def new
+
   end
 
   def create
@@ -8,6 +9,7 @@ class SessionsController < ApplicationController
     session[:user_id] = @user.id
     redirect_to @user
     else
+      flash[:danger] "Login information not found"
       render 'new'
     end
   end
