@@ -184,6 +184,7 @@ DEPENDENCIES
   coffee-rails (~> 4.1.0)
   jbuilder (~> 2.0)
   jquery-rails
+  nokogiri
   pg (~> 0.15)
   pg_search (~> 0.7.9)
   rails (= 4.2.5)

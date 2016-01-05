@@ -3,7 +3,7 @@
   </div>
   <div class="col-md-3">
     <p>
-      <img class="poster show" src="/images/<%=@movie.poster_url.split("/")[-1] %>">
+      <img class="poster show" src="<%=@movie.poster_url%>">
     </p>
   </div>
 
@@ -16,26 +16,6 @@
     </p>
 
     <p>
-      <strong>Release date:</strong>
-      <%= @movie.release_date %>
-    </p>
-
-    <p>
-      <strong>Runtime:</strong>
-      <%= @movie.runtime %>
-    </p>
-
-    <p>
-      <strong>Director:</strong>
-      <%= @movie.director %>
-    </p>
-
-    <p>
-      <strong>Cast:</strong>
-      <%= @movie.cast %>
-    </p>
-
-    <p>
       <strong>Avg rating:</strong>
       <%= @movie.avg_rating %>
     </p>
@@ -44,12 +24,6 @@
       <strong>Summary:</strong>
       <%= @movie.summary %>
     </p>
-
-    <p>
-      <strong>Creator:</strong>
-      <%= @movie.creator_id %>
-    </p>
-
 
     <%= link_to 'Edit', edit_movie_path(@movie) %> |
     <%= link_to 'Back', movies_path %><br><br>
@@ -62,7 +36,9 @@
     <% end %>
 
     <% unless current_user && current_user.favorites.exists?(movie_id: @movie.id) %>
-      <%= button_to "Add to Favorites", movie_favorites_path(@movie) %>
+      <% if current_user %>
+        <%= button_to "Add to Favorites", movie_favorites_path(@movie) %>
+      <% end %>
 
       <% else %>
       <%= button_to 'Remove from favorites', movie_favorite_path(@movie, current_user.favorited?(@movie)), {method: "delete"} %>

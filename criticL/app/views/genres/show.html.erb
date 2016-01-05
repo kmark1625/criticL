@@ -25,7 +25,7 @@
       <tbody>
         <% @movies.each do |movie| %>
           <tr>
-            <td><img class="poster" src="/images/<%=movie.poster_url.split("/")[-1] %>"></td>
+            <td><img class="poster" src="<%=movie.poster_url%>"></td>
             <td><a href="/movies/<%= movie.id %>"><%= movie.title %></a></td>
             <td><%= movie.release_date %></td>
             <td><%= movie.runtime %></td>
@@ -34,7 +34,7 @@
             <td><%= movie.avg_rating.to_f %></td>
             <td><%= movie.summary %></td>
             <td><%= movie.creator_id %></td>
-            <% if current_user.id == movie.creator_id %>
+            <% if current_user && current_user.id == movie.creator_id %>
               <td><%= link_to 'Show', movie %></td>
               <td><%= link_to 'Edit', edit_movie_path(movie) %></td>
               <td><%= link_to 'Destroy', movie, method: :delete, data: { confirm: 'Are you sure?' } %></td>
