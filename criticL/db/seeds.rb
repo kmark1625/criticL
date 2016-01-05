@@ -59,8 +59,7 @@ action = Genre.create(name: "Action")
 # created_movie.genres << action
 
 ### Code to parse page with NokoGiri
-(1..442).each do |page_num|
-  puts page_num
+(1..2).each do |page_num|
   movie_page_doc =  Nokogiri::HTML(open("https://www.themoviedb.org/discover/movie?page=#{page_num}&sort_by=popularity.desc&media_type=movie"))
   movie_titles = movie_page_doc.css(".title")
   movie_summaries = movie_page_doc.css(".overview")
@@ -69,10 +68,8 @@ action = Genre.create(name: "Action")
   movie_poster_urls.each do |movie_poster|
     movie_poster_array << movie_poster.attribute("srcset").to_s.split(",")[0][0..-4]
   end
-  puts movie_page_doc.css(".result .poster").attribute("srcset").to_s.split(",")[0][0..-4]
-  puts movie_poster_array[0]
   # release_dates = movie_page_doc.css(".release_date")
   movie_titles.each_with_index do |movie_title, index|
-    Movie.create(title: movie_title, poster_url: movie_poster_array[index], summary: movie_summaries[index])
+    Movie.create(title: movie_title.text(), poster_url: movie_poster_array[index], summary: movie_summaries[index].text())
   end
 end
