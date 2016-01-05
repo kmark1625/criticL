@@ -61,14 +61,23 @@
       <%= link_to "Log in to review", login_path %>
     <% end %>
 
+    <% unless current_user && current_user.favorites.exists?(movie_id: @movie.id) %>
+      <%= button_to "Add to Favorites", movie_favorites_path(@movie) %>
+
+      <% else %>
+      <%= button_to 'Remove from favorites', movie_favorite_path(@movie, current_user.favorited?(@movie)), {method: "delete"} %>
+
+    <% end %>
+
   </div>
+
+
   <div class="col-md-1">
   </div>
 </div>
 <br>
 <div class="row">
   <div class="col-md-1">
-
   </div>
   <div class="col-md-10">
     <div class="container">
@@ -86,3 +95,4 @@
   <div class="col-md-1">
   </div>
 </div>
+<br>

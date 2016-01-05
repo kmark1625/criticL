@@ -16,7 +16,9 @@
     <%= @user.upvotes %>
   </p>
 
-  <div class="panel panel-default">
+<div class="row">
+
+  <div class="panel panel-default col-md-6">
     <h4>Top Reviews</h4>
     <% if @user.reviews %>
       <% @user.reviews.each do |review| %>
@@ -28,10 +30,33 @@
         </div>
       <% end %>
     <% end %>
-  </div>
 
   <% if @user.id == session[:user_id] %>
     <%= link_to 'Edit', edit_user_path(@user) %> |
   <% end %>
   <%= link_to 'Back', root_path %>
+</div>
+
+
+<div class="panel panel-default col-md-6">
+    <h4>Favorited Movies</h4>
+
+    <% if @user.favorited_movies %>
+
+      <% @user.favorited_movies.each do |favorite| %>
+        <div class="panel panel-default">
+
+
+          <table>
+            <tr>
+              <td><img class="poster show" src="/images/<%=favorite.poster_url.split("/")[-1] %>"></td>
+              <td><center><strong><%= link_to "#{favorite.title}", movie_path(favorite) %></strong></center><br><%= favorite.summary%></td>
+          </tr>
+        </table>
+
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+
 </div>
