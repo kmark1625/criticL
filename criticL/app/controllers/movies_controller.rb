@@ -4,7 +4,8 @@ class MoviesController < ApplicationController
   # GET /movies
   # GET /movies.json
   def index
-    @movies = Movie.all
+    @movies = Movie.order(avg_rating: :desc).last(10)
+    @genres = Genre.all
   end
 
   # GET /movies/1
