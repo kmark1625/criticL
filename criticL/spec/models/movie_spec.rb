@@ -19,7 +19,7 @@ describe Movie do
       movie2.reviews.create(rating: 5)
       movie2.reviews.create(rating: 10)
       movie2.calculate_avg
-      expect(movie2.avg_rating).to eq 7.0
+      expect(movie2.avg_rating).to eq 7.5
     end
   end
 end

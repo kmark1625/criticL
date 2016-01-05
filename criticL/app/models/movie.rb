@@ -15,7 +15,7 @@ class Movie < ActiveRecord::Base
     self.reviews.each do |review|
       total += review.rating
     end
-    self.avg_rating = total/self.reviews.length
+    self.avg_rating = total.to_f/self.reviews.length.to_f
     self.save
   end
 end
