@@ -3,6 +3,7 @@ class Review < ActiveRecord::Base
   belongs_to :movie
   has_many :votes
 
+  validates :title, :rating, :content, { presence: true }
   def total_votes
     sum = 0
     self.votes.each do |vote|
