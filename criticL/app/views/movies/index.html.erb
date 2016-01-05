@@ -27,7 +27,7 @@
           <td><%= movie.runtime %></td>
           <td><%= movie.director %></td>
           <td><%= movie.cast %></td>
-          <td><%= movie.avg_rating %></td>
+          <td><%= movie.avg_rating.to_f %></td>
           <td><%= movie.summary %></td>
           <td><%= movie.creator_id %></td>
           <td><%= link_to 'Show', movie %></td>
