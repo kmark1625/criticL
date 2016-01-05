@@ -28,6 +28,11 @@ describe UsersController do
         post :create, user: { username: "user1", email: "user1@user.com", password: "password" }
         expect(assigns(:user)).to eq(User.last)
       end
+
+      it "redirects to user profile" do
+        post :create, user: { username: "user2", email: "user2@user.com", password: "password" }
+        expect(user).to redirect_to(User.last)
+      end
     end
   end
 
