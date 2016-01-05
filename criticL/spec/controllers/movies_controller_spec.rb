@@ -10,10 +10,10 @@ describe MoviesController do
     end
   end
 
-  # describe "GET#show" do
-  #   it "assigns requested movie as @movie" do
-  #     get :movie, { id: movie.id }
-  #     expect(assigns(:movie)).to eq(movie)
-  #   end
-  # end
+  describe "GET#show" do
+    it "assigns requested movie as @movie" do
+      get :show, { id: movie.id }
+      expect(assigns(:movie)).to eq(movie)
+    end
+  end
 end
