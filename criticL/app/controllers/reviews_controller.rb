@@ -25,11 +25,12 @@ class ReviewsController < ApplicationController
   # POST /movies/:movie_id/reviews
   # POST /movies/:movie_id/reviews.json
   def create
+    @movie = Movie.find_by(id: params[:movie_id])
     @review = Review.new(review_params)
 
     respond_to do |format|
       if @review.save
-        format.html { redirect_to @review, notice: 'Review was successfully created.' }
+        format.html { redirect_to @movie, notice: 'Review was successfully created.' }
         format.json { render :show, status: :created, location: @review }
       else
         format.html { render :new }

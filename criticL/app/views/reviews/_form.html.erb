@@ -10,26 +10,17 @@
       </ul>
     </div>
   <% end %>
-
   <div class="field">
-    <%= f.label :reviewer_id %><br>
-    <%= f.number_field :reviewer_id %>
-  </div>
-  <div class="field">
-    <%= f.label :movie_id %><br>
-    <%= f.number_field :movie_id %>
+    <%= f.label :title %><br>
+    <%= f.text_field :title %>
   </div>
   <div class="field">
     <%= f.label :rating %><br>
-    <%= f.number_field :rating %>
+    <%= select_tag "rating", "<option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6</option><option>7</option><option>8</option><option>9</option><option>10</option>".html_safe  %>
   </div>
   <div class="field">
     <%= f.label :content %><br>
     <%= f.text_area :content %>
-  </div>
-  <div class="field">
-    <%= f.label :title %><br>
-    <%= f.text_field :title %>
   </div>
   <div class="actions">
     <%= f.submit %>
