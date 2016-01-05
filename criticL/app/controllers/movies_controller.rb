@@ -10,7 +10,7 @@ class MoviesController < ApplicationController
 
   def search
     search = params[:search]
-    @movies = Movie.search_by_title(search)
+    @movies = Movie.search_by_title(search).order(avg_rating: :desc).last(10)
     @genres = Genre.all
     render "index"
   end
