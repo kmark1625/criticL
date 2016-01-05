@@ -10,16 +10,9 @@ class GenresController < ApplicationController
   # GET /genres/1
   # GET /genres/1.json
   def show
+    @movies = @genre.movies
   end
 
-  # GET /genres/new
-  def new
-    @genre = Genre.new
-  end
-
-  # GET /genres/1/edit
-  def edit
-  end
 
   # POST /genres
   # POST /genres.json
