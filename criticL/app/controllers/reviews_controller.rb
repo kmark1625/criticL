@@ -33,6 +33,7 @@ class ReviewsController < ApplicationController
       if @review.save
         @movie.reviews << @review
         current_user.reviews << @review
+        @movie.calculate_avg
         format.html { redirect_to @movie, notice: 'Review was successfully created.' }
         format.json { render :show, status: :created, location: @review }
       else

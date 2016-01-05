@@ -43,11 +43,11 @@ ActiveRecord::Schema.define(version: 20160105141637) do
     t.string   "director"
     t.string   "cast"
     t.text     "poster_url"
-    t.decimal  "avg_rating"
+    t.float    "avg_rating",   default: 0.0
     t.text     "summary"
     t.integer  "creator_id"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
   end
 
   create_table "reviews", force: :cascade do |t|

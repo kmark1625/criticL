@@ -7,7 +7,7 @@ class CreateMovies < ActiveRecord::Migration
       t.string :director
       t.string :cast
       t.text :poster_url
-      t.decimal :avg_rating
+      t.float :avg_rating, default: 0.0
       t.text :summary
       t.integer :creator_id
 
