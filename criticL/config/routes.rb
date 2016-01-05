@@ -1,8 +1,9 @@
 Rails.application.routes.draw do
-  resources :votes, only: :create
   resources :users
   resources :movies do
-      resources :reviews
+      resources :reviews do
+        resources :votes, only: [:create]
+      end
   end
   resources :genres, only: [:index, :show]
   get "login" => "sessions#new"
