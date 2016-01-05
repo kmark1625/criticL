@@ -1,4 +1,6 @@
+require "pg_search"
 class Movie < ActiveRecord::Base
+  include PgSearch
   has_many :classifications
   has_many :genres, through: :classifications
   has_many :reviews
@@ -9,6 +11,8 @@ class Movie < ActiveRecord::Base
   validates :title, presence: true
   validates :release_date, presence: true
   validates :summary, presence: true
+
+  pg_search_scope :search_by_title, :against => :title
 
   def calculate_avg
     total = 0
