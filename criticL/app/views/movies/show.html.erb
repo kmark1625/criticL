@@ -50,8 +50,13 @@
       <%= @movie.creator_id %>
     </p>
 
+
     <%= link_to 'Edit', edit_movie_path(@movie) %> |
-    <%= link_to 'Back', movies_path %>
+    <%= link_to 'Back', movies_path %><br><br>
+    <form action="/movies/<%= @movie.id %>/reviews/new" method="get">
+      <p><button type="submit">Add Review</button></p>
+    </form>
+
   </div>
   <div class="col-md-1">
   </div>
