@@ -13,9 +13,9 @@
         <a class="navbar-brand" href="/movies">criticL</a>
       </div>
       <ul class="nav navbar-nav">
-      <% if session[:user_id] %>
+      <% if logged_in? %>
         <li class="active"><%= link_to "Log Out", logout_path, method: :delete %></li>
-        <li class="active">Hello user!</li>
+        <li class="active"><%= link_to "#{current_user.username}", current_user %></li>
       <% else %>
         <li class="active"><%= link_to "Log In", login_path%></li>
         <li class="active"><%= link_to "Register", new_user_path%></li>
