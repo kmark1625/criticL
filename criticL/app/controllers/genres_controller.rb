@@ -10,7 +10,8 @@ class GenresController < ApplicationController
   # GET /genres/1
   # GET /genres/1.json
   def show
-    @movies = @genre.movies
+    @genres = Genre.all
+    @movies = @genre.movies.order(avg_rating: :desc)
   end
 
 
