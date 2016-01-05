@@ -46,10 +46,13 @@
       <% @user.favorited_movies.each do |favorite| %>
         <div class="panel panel-default">
 
-          <strong><%= link_to "#{favorite.title}", movie_path(favorite) %></strong><br>
-            <p>
-              <img class="poster show" src="/images/<%=favorite.poster_url.split("/")[-1] %>">
-            </p>
+
+          <table>
+            <tr>
+              <td><img class="poster show" src="/images/<%=favorite.poster_url.split("/")[-1] %>"></td>
+              <td><center><strong><%= link_to "#{favorite.title}", movie_path(favorite) %></strong></center><br><%= favorite.summary%></td>
+          </tr>
+        </table>
 
         </div>
       <% end %>
