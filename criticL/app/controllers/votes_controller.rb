@@ -1,64 +1,32 @@
 class VotesController < ApplicationController
-  before_action :set_vote, only: [:show, :edit, :update, :destroy]
+  # before_action :set_vote, only: [:update]
 
-  # GET /votes
-  # GET /votes.json
-  def index
-    @votes = Vote.all
-  end
-
-  # GET /votes/1
-  # GET /votes/1.json
-  def show
-  end
-
-  # GET /votes/new
-  def new
-    @vote = Vote.new
-  end
-
-  # GET /votes/1/edit
-  def edit
-  end
-
-  # POST /votes
-  # POST /votes.json
+  # POST /movies/:movie_id/reviews/:review_id/votes
+  # POST /movies/:movie_id/reviews/:review_id/votes.json
   def create
-    @vote = Vote.new(vote_params)
+    @movie = Movie.find_by(id: params[:movie_id])
+    @review = @movie.reviews.find_by(id: params[:review_id])
 
-    respond_to do |format|
+    if vote = Vote.where(review: @review, voter: current_user).first
+      vote.destroy
+    end
+
+    @vote = Vote.new(value: params[:value])
+    # respond_to do |format|
+    # !already_voted? &&
+    @vote.review = @review
+    @vote.voter = current_user
       if @vote.save
-        format.html { redirect_to @vote, notice: 'Vote was successfully created.' }
-        format.json { render :show, status: :created, location: @vote }
+        redirect_to movie_path(@movie)
       else
-        format.html { render :new }
-        format.json { render json: @vote.errors, status: :unprocessable_entity }
+        @error = "You already voted."
+        render :template => "movies/show"
+          # format.html { redirect_to movie_path(@movie), notice: 'Thank you for your feedback.' }
+          # format.json { render :show, status: :created, location: @vote }
+          # format.html { render :new }
+          # format.json { render json: @vote.errors, status: :unprocessable_entity }
+      # end
       end
-    end
-  end
-
-  # PATCH/PUT /votes/1
-  # PATCH/PUT /votes/1.json
-  def update
-    respond_to do |format|
-      if @vote.update(vote_params)
-        format.html { redirect_to @vote, notice: 'Vote was successfully updated.' }
-        format.json { render :show, status: :ok, location: @vote }
-      else
-        format.html { render :edit }
-        format.json { render json: @vote.errors, status: :unprocessable_entity }
-      end
-    end
-  end
-
-  # DELETE /votes/1
-  # DELETE /votes/1.json
-  def destroy
-    @vote.destroy
-    respond_to do |format|
-      format.html { redirect_to votes_url, notice: 'Vote was successfully destroyed.' }
-      format.json { head :no_content }
-    end
   end
 
   private
@@ -71,4 +39,15 @@ class VotesController < ApplicationController
     def vote_params
       params.require(:vote).permit(:value, :review_id, :voter_id)
     end
+
+    # def already_voted?
+    #   @movie = Movie.find_by(id: params[:movie_id])
+    #   @review = @movie.reviews.find_by(id: params[:review_id])
+    #   @review.votes.each do |vote|
+    #     if current_user.votes.include?(vote)
+    #       return true
+    #     end
+    #   end
+    #   return false
+    # end
 end
