@@ -1,3 +1,7 @@
+<% if @error %>
+  <%= @error %>
+<% end %>
+
  <div class="row">
   <div class="col-md-1">
   </div>
@@ -59,12 +63,26 @@
     <div class="container">
       <h2>Reviews</h2>
     </div>
-      <% @reviews.each do |review| %>
+      <% @movie.reviews.each do |review| %>
       <div class="movie-display container">
         <h3><%= review.title %></h3>
         <p>by: <%= review.reviewer.username %></p>
         <p>Rating: <%= review.rating %></p>
         <p><%= review.content %></p>
+        <% if logged_in? %>
+          <% if current_user.reviews.include?(review) %>
+          <% else %>
+            <form action="/movies/<%=@movie.id%>/reviews/<%=review.id%>/votes" method="post">
+              <input type="hidden" name="value" value="1">
+              <input class="thumbs-up" type="submit" value= "&#x1F44D;">
+            </form>
+            <form action="/movies/<%=@movie.id%>/reviews/<%=review.id%>/votes" method="post">
+              <input type="hidden" name="value" value="-1">
+              <input class="thumbs-down" type="submit" value="&#x1F44E;">
+            </form>
+          <% end %>
+        <% end %>
+        <p class="sm"><%= review.total_votes %> people found this review helpful.</p>
       </div>
       <% end %>
   </div>

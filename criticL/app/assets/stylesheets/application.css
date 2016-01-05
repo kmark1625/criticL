@@ -48,4 +48,11 @@ img.poster, img.show {
   box-shadow: 2px 2px 5px black;
   background-color: AliceBlue;
 }
+.sm {
+  font-size: .7em;
+}
+.thumbs-up, .thumbs-down {
+  border: none;
+  background: AliceBlue;
+}
 
