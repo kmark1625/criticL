@@ -21,7 +21,7 @@
     <tbody>
       <% @movies.each do |movie| %>
         <tr>
-          <td><img class="poster" src="/images/<%=movie.poster_url.split("/")[-1] %>"></td>
+          <td><img class="poster" src="<%=movie.poster_url%>"></td>
           <td><a href="/movies/<%= movie.id %>"><%= movie.title %></a></td>
           <td><%= movie.release_date %></td>
           <td><%= movie.runtime %></td>

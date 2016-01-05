@@ -7,6 +7,5 @@ class Movie < ActiveRecord::Base
   has_many :fans, through: :favorites, source: :user
 
   validates :title, presence: true
-  validates :release_date, presence: true
   validates :summary, presence: true
 end
