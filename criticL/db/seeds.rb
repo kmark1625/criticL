@@ -90,8 +90,22 @@ movie_hash = {"Action"=>action, "Adventure"=>adventure, "Animation"=>animation, 
   movie_poster_urls.each do |movie_poster|
     movie_poster_array << movie_poster.attribute("srcset").to_s.split(",")[0][0..-4]
   end
-  # release_dates = movie_page_doc.css(".release_date")
+  movie_genre_array = []
+  movie_genres = movie_page_doc.css(".genres")
+  movie_genres.each do |movie_genre|
+    # p movie_genre.text().split(", ")
+    movie_genre_array << movie_genre.text.split(", ")
+  end
+
   movie_titles.each_with_index do |movie_title, index|
     Movie.create(title: movie_title.text(), poster_url: movie_poster_array[index], summary: movie_summaries[index].text())
+  end
+
+  movie_genre_array.each_with_index do |movie_genres, index|
+    if movie_genres.length > 0
+      movie_genres.each do |genre|
+        movie_hash["#{genre}"].movies << Movie.find_by(title: movie_titles[index].text())
+      end
+    end
   end
 end
