@@ -192,7 +192,7 @@ DEPENDENCIES
   jbuilder (~> 2.0)
   jquery-rails
   pg (~> 0.15)
-  pg_search (~> 0.7.8)
+  pg_search (~> 0.7.9)
   rails (= 4.2.5)
   rspec-rails
   sass-rails (~> 5.0)

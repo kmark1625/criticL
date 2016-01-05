@@ -8,6 +8,12 @@ class MoviesController < ApplicationController
     @genres = Genre.all
   end
 
+  def search
+    search = params[:search]
+    @movies = Movie.search_by_title(search)
+    @genres = Genre.all
+    render "index"
+  end
   # GET /movies/1
   # GET /movies/1.json
   def show
@@ -72,6 +78,6 @@ class MoviesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def movie_params
-      params.require(:movie).permit(:title, :release_date, :runtime, :director, :cast, :poster_url, :avg_rating, :summary, :creator_id)
+      params.require(:movie).permit(:title, :release_date, :runtime, :director, :cast, :poster_url, :avg_rating, :summary, :creator_id, :search)
     end
 end
