@@ -9,12 +9,6 @@ require 'json'
 require 'open-uri'
 require 'nokogiri'
 
-comedy = Genre.create(name: "Comedy")
-adventure = Genre.create(name: "Adventure")
-horror = Genre.create(name: "Horror")
-scifi = Genre.create(name: "Sci-Fi")
-action = Genre.create(name: "Action")
-
 # movie = JSON.parse('{"Title":"The Martian","Year":"2015","Rated":"PG-13","Released":"02 Oct 2015","Runtime":"144 min","Genre":"Adventure, Drama, Sci-Fi","Director":"Ridley Scott","Writer":"Drew Goddard (screenplay), Andy Weir (book)","Actors":"Matt Damon, Jessica Chastain, Kristen Wiig, Jeff Daniels","Plot":"During a manned mission to Mars, Astronaut Mark Watney is presumed dead after a fierce storm and left behind by his crew. But Watney has survived and finds himself stranded and alone on the hostile planet. With only meager supplies, he must draw upon his ingenuity, wit and spirit to subsist and find a way to signal to Earth that he is alive.","Language":"English, Mandarin","Country":"USA, UK","Awards":"Nominated for 3 Golden Globes. Another 8 wins & 14 nominations.","Poster":"http://ia.media-imdb.com/images/M/MV5BMTc2MTQ3MDA1Nl5BMl5BanBnXkFtZTgwODA3OTI4NjE@._V1_SX300.jpg","Metascore":"80","imdbRating":"8.2","imdbVotes":"187,881","imdbID":"tt3659388","Type":"movie","Response":"True"}')
 
 # created_movie = Movie.create(title: movie["Title"], release_date: movie["Released"], runtime: movie["Runtime"], director: movie["Director"], cast: movie["Actors"], poster_url: movie["Poster"], summary: movie["Plot"])
@@ -59,6 +53,34 @@ action = Genre.create(name: "Action")
 # created_movie.genres << action
 
 ### Code to parse page with NokoGiri
+
+action = Genre.create(name: "Action")
+adventure = Genre.create(name: "Adventure")
+animation = Genre.create(name: "Animation")
+comedy = Genre.create(name: "Comedy")
+crime = Genre.create(name: "Crime")
+documentary = Genre.create(name: "Documentary")
+drama = Genre.create(name: "Drama")
+family = Genre.create(name: "Family")
+fantasy = Genre.create(name: "Fantasy")
+foreign = Genre.create(name: "Foreign")
+history = Genre.create(name: "History")
+horror = Genre.create(name: "Horror")
+music = Genre.create(name: "Music")
+mystery = Genre.create(name: "Mystery")
+romance = Genre.create(name: "Romance")
+science_fiction = Genre.create(name: "Science Fiction")
+tv_movie = Genre.create(name: "TV Movie")
+thriller = Genre.create(name: "Thriller")
+war = Genre.create(name: "War")
+western = Genre.create(name: "Western")
+
+movie_hash = {"Action"=>action, "Adventure"=>adventure, "Animation"=>animation, "Comedy"=>comedy, "Crime"=>crime, "Documentary"=>documentary, "Drama"=>drama, "Family"=>family, "Fantasy"=>fantasy, "Foreign"=>foreign, "History"=>history, "Horror"=>horror, "Music"=>music, "Mystery"=>mystery, "Romance"=>romance, "Science Fiction"=>science_fiction, "TV Movie"=>tv_movie, "Thriller"=>thriller, "War"=>war, "Western"=>western}
+# Genre list
+# Action, Adventure, Animation, Comedy, Crime, Documentary, Drama, Family
+# Fantasy, Foreign, History, Horror, Music, Mystery, Romance, Science Fiction
+# TV Movie, Thriller, War, Western
+
 (1..2).each do |page_num|
   movie_page_doc =  Nokogiri::HTML(open("https://www.themoviedb.org/discover/movie?page=#{page_num}&sort_by=popularity.desc&media_type=movie"))
   movie_titles = movie_page_doc.css(".title")
