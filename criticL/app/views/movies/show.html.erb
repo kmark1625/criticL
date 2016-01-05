@@ -50,8 +50,17 @@
       <%= @movie.creator_id %>
     </p>
 
+
     <%= link_to 'Edit', edit_movie_path(@movie) %> |
-    <%= link_to 'Back', movies_path %>
+    <%= link_to 'Back', movies_path %><br><br>
+    <% if logged_in? %>
+      <form action="/movies/<%= @movie.id %>/reviews/new" method="get">
+        <p><button type="submit">Add Review</button></p>
+      </form>
+    <% else %>
+      <%= link_to "Log in to review", login_path %>
+    <% end %>
+
   </div>
   <div class="col-md-1">
   </div>
@@ -62,7 +71,17 @@
 
   </div>
   <div class="col-md-10">
-    <h2>Review Title</h2>
+    <div class="container">
+      <h2>Reviews</h2>
+    </div>
+      <% @reviews.each do |review| %>
+      <div class="movie-display container">
+        <h3><%= review.title %></h3>
+        <p>by: <%= review.reviewer.username %></p>
+        <p>Rating: <%= review.rating %></p>
+        <p><%= review.content %></p>
+      </div>
+      <% end %>
   </div>
   <div class="col-md-1">
   </div>

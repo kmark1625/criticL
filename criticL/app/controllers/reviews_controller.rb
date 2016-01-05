@@ -1,19 +1,20 @@
 class ReviewsController < ApplicationController
   before_action :set_review, only: [:show, :edit, :update, :destroy]
 
-  # GET /reviews
-  # GET /reviews.json
+  # GET /movies/:movie_id/reviews
+  # GET /movies/:movie_id/reviews.json
   def index
     @reviews = Review.all
   end
 
-  # GET /reviews/1
-  # GET /reviews/1.json
+  # GET /movies/:movie_id/reviews/1
+  # GET /movies/:movie_id/reviews/1.json
   def show
   end
 
-  # GET /reviews/new
+  # GET /movies/:movie_id/reviews/new
   def new
+    @movie = Movie.find_by(id: params[:movie_id])
     @review = Review.new
   end
 
@@ -21,14 +22,18 @@ class ReviewsController < ApplicationController
   def edit
   end
 
-  # POST /reviews
-  # POST /reviews.json
+  # POST /movies/:movie_id/reviews
+  # POST /movies/:movie_id/reviews.json
   def create
+    @movie = Movie.find_by(id: params[:movie_id])
     @review = Review.new(review_params)
+    current_user = User.find_by(id: session[:user_id])
 
     respond_to do |format|
       if @review.save
-        format.html { redirect_to @review, notice: 'Review was successfully created.' }
+        @movie.reviews << @review
+        current_user.reviews << @review
+        format.html { redirect_to @movie, notice: 'Review was successfully created.' }
         format.json { render :show, status: :created, location: @review }
       else
         format.html { render :new }
@@ -37,8 +42,8 @@ class ReviewsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /reviews/1
-  # PATCH/PUT /reviews/1.json
+  # PATCH/PUT /movies/:movie_id/reviews/1
+  # PATCH/PUT /movies/:movie_id/reviews/1.json
   def update
     respond_to do |format|
       if @review.update(review_params)
@@ -51,8 +56,8 @@ class ReviewsController < ApplicationController
     end
   end
 
-  # DELETE /reviews/1
-  # DELETE /reviews/1.json
+  # DELETE /movies/:movie_id/reviews/1
+  # DELETE /movies/:movie_id/reviews/1.json
   def destroy
     @review.destroy
     respond_to do |format|

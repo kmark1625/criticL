@@ -38,8 +38,14 @@ img.poster, img.show {
   width: 200px;
   height: 296px;
 }
-
 .box {
   border: 1px solid black;
   background-color: AliceBlue;
 }
+.movie-display {
+  border: 1px solid black;
+  margin-bottom: 1em;
+  box-shadow: 2px 2px 5px black;
+  background-color: AliceBlue;
+}
+
