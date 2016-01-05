@@ -1,10 +1,10 @@
 Rails.application.routes.draw do
   resources :users
   resources :movies do
-      resources :reviews do
-        resources :votes, only: [:create]
-        resources :favorites, only: [:create, :destroy]
-      end
+    resources :favorites, only: [:create, :destroy]
+    resources :reviews do
+      resources :votes, only: [:create]
+    end
   end
   resources :votes, only: :create
   resources :genres, only: [:index, :show]
