@@ -27,10 +27,12 @@ class ReviewsController < ApplicationController
   def create
     @movie = Movie.find_by(id: params[:movie_id])
     @review = Review.new(review_params)
+    current_user = User.find_by(id: session[:user_id])
 
     respond_to do |format|
       if @review.save
         @movie.reviews << @review
+        current_user.reviews << @review
         format.html { redirect_to @movie, notice: 'Review was successfully created.' }
         format.json { render :show, status: :created, location: @review }
       else
