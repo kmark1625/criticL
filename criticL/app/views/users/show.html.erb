@@ -22,7 +22,7 @@
       <% @user.reviews.each do |review| %>
         <div class="panel panel-default">
           <strong><%= link_to "#{review.movie.title}", movie_path(review.movie) %></strong><br>
-          <strong><%= link_to "#{review.title}", review_path(review) %></strong>
+          <strong><%= link_to "#{review.title}", movie_review_path(review.movie, review) %></strong>
           <p><%= truncate(review.content, length:50)%></p>
           <p>Rating: <%= review.rating %> </p>
         </div>
