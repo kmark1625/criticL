@@ -10,6 +10,8 @@ class MoviesController < ApplicationController
   # GET /movies/1
   # GET /movies/1.json
   def show
+    @movie = Movie.find_by(id: 1)
+    @reviews = @movie.reviews
   end
 
   # GET /movies/new

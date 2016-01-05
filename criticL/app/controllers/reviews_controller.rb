@@ -30,6 +30,7 @@ class ReviewsController < ApplicationController
 
     respond_to do |format|
       if @review.save
+        @movie.reviews << @review
         format.html { redirect_to @movie, notice: 'Review was successfully created.' }
         format.json { render :show, status: :created, location: @review }
       else
