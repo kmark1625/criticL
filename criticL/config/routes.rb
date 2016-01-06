@@ -6,19 +6,52 @@ Rails.application.routes.draw do
       resources :votes, only: [:create]
     end
   end
+
   resources :votes, only: :create
   resources :genres, only: [:index, :show]
+
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # #
   get "login" => "sessions#new"
   post "login" => "sessions#create"
+
+  get 'auth/:provider/callback' => 'sessions#facebook_create'
+  post 'auth/:provider/callback' => 'sessions#facebook_create'
+
+  # get 'auth/failure' => root
+  # post 'auth/failure' => root
+  # match 'auth/failure', to: redirect('/'), via: [:get, :post]
+
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+
   delete "logout" => "sessions#destroy"
+
+  get 'logout' => 'sessions#destroy'
+  # post 'signout' => 'sessions#destroy'
+
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+
   get 'welcome/index'
   get "search" => "movies#search"
-  # The priority is based upon order of creation: first created -> highest priority.
-  # See how all your routes lay out with "rake routes".
-
 
   # You can have the root of your site routed with "root"
   root 'movies#index'
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
