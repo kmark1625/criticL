@@ -16,4 +16,11 @@ describe MoviesController do
       expect(assigns(:movie)).to eq(movie)
     end
   end
+
+  describe "GET#search" do
+    it "assigns found movies as @movies" do
+      get :search, { search: movie.title }
+      expect(assigns(:movies).first).to be_a(Movie)
+    end
+  end
 end
