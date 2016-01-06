@@ -9,6 +9,7 @@ class User < ActiveRecord::Base
   validates :username, presence: true, uniqueness: true
   validates :email, presence: true, uniqueness: true
   validates :password, presence: true
+  validates :rated_movies, uniqueness: true
   validates :email, format: { with: /\w+@\w+\.\w{2,3}/i, message: "please enter a valid email address"}
   has_secure_password
 
@@ -30,9 +31,23 @@ class User < ActiveRecord::Base
     User.all.sort_by(&:score).reverse
   end
 
+  def owns_review?(review)
+    self.reviews.include?(review)
+  end
+
+  def already_reviewed?(movie)
+    movie.reviews.each do |review|
+      self.owns_review?(review)
+    end
+  end
+
   def rank
     # [0: "peasant",10: "trusted",25: "master",50: "legend",100: "the boss",200: "movie god",250: "cineaste", 500: "jedi warrior"]
     case self.score
+    when (-100)...(-10)
+      "Treasure Troll"
+    when (-10)...0
+      "Know-Nothing"
     when 0...10
       "Peasant"
     when 10...25

@@ -15,11 +15,18 @@ class ReviewsController < ApplicationController
   # GET /movies/:movie_id/reviews/new
   def new
     @movie = Movie.find_by(id: params[:movie_id])
+    if !logged_in?
+      redirect_to login_path
+    elsif current_user.already_reviewed?(@movie)
+      redirect_to movie_path(@movie)
+    end
     @review = Review.new
   end
 
   # GET /reviews/1/edit
   def edit
+    @movie = Movie.find_by(id: params[:movie_id])
+    @review = Review.find_by(id: params[:id])
   end
 
   # POST /movies/:movie_id/reviews
