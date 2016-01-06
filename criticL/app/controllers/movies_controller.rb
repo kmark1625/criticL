@@ -20,6 +20,7 @@ class MoviesController < ApplicationController
   def show
     @movie = Movie.find(params[:id])
     @reviews = @movie.reviews
+    render 'show', locals: {movie: @movie}
   end
 
   # GET /movies/new
