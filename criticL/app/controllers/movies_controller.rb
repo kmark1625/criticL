@@ -6,6 +6,7 @@ class MoviesController < ApplicationController
   def index
     @movies = Movie.order(avg_rating: :desc).first(10)
     @genres = Genre.all
+    @users = User.sorted_by_score.first(10)
   end
 
   def search
