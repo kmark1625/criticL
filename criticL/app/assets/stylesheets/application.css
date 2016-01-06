@@ -96,3 +96,20 @@ table.mine {
 .rating {
   font-size: 26px;
 }
+.movie-info {
+  background-color: #dea879;
+}
+.review-box{
+  background-color: #dea879;
+  max-width: 600px;
+  float: left;
+}
+
+.panel.review-box {
+  background-color: #dea879;
+}
+
+.panel.review-container{
+  background-color: #e3dfe1;
+  border: 1px solid #c7bec3;
+}
