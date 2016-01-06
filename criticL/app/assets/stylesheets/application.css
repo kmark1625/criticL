@@ -22,13 +22,26 @@ body {
   /* Margin bottom by footer height */
   margin-bottom: 60px;
 }
+body.background {
+  background-color: #efd4bc;
+}
 .footer {
   position: absolute;
   bottom: 0;
   width: 100%;
   /* Set the fixed height of the footer here */
-  height: 60px;
+  height: 30px;
   background-color: #f5f5f5;
+}
+.navbar-inverse.mine {
+  background-color: #690c05;
+  color: #c7bec3;
+}
+.navbar-nav.mine {
+  background-color: #310101;
+}
+.navbar-brand.mine {
+  color: #c7bec3;
 }
 img.poster {
   width: 100px;
@@ -55,4 +68,48 @@ img.poster, img.show {
   border: none;
   background: AliceBlue;
 }
+.navbar.mine {
+  background-color: #690c05;
+}
+.table-header {
+  margin-left: 20px;
+  text-align: center;
+}
+.list-item{
+  max-width: 350px;
+  background-color: #dea879;
+  border: 1px black solid;
+}
+.title{
+  font-weight: bolder;
+  color: #f2312a;
+  font-size: 18px;
+}
+.list-row {
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+table.mine {
+  border-collapse: separate;
+  border-spacing: 0 2em;
+}
+.rating {
+  font-size: 26px;
+}
+.movie-info {
+  background-color: #dea879;
+}
+.review-box{
+  background-color: #dea879;
+  max-width: 600px;
+  float: left;
+}
 
+.panel.review-box {
+  background-color: #dea879;
+}
+
+.panel.review-container{
+  background-color: #e3dfe1;
+  border: 1px solid #c7bec3;
+}
