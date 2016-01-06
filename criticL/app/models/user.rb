@@ -17,4 +17,40 @@ class User < ActiveRecord::Base
       favorites.find_by(movie: movie)
     end
   end
+
+  def score
+    sum = 0
+    self.reviews.each do |review|
+      sum += review.total_votes
+    end
+    sum
+  end
+
+  def self.sorted_by_score
+    User.all.sort_by(&:score).reverse
+  end
+
+  def rank
+    # [0: "peasant",10: "trusted",25: "master",50: "legend",100: "the boss",200: "movie god",250: "cineaste", 500: "jedi warrior"]
+    case self.score
+    when 0...10
+      "Peasant"
+    when 10...25
+      "Trusted"
+    when 25...50
+      "Master"
+    when 50...100
+      "Legend"
+    when 100...200
+      "THE boss"
+    when 200...250
+      "Movie god"
+    when 250...500
+      "Cineaste"
+    when 10000000
+      "KMONEY $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$"
+    else
+      "Jedi Warrior (Yoda)"
+    end
+  end
 end
