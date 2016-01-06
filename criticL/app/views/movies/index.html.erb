@@ -26,7 +26,7 @@
           <tr class="list-row">
             <td><img class="poster" src="<%=movie.poster_url%>"></td>
             <td class="list-item title"><a href="/movies/<%= movie.id %>"><%= movie.title %></a></td>
-            <td class="list-item"><%= movie.avg_rating.to_f %></td>
+            <td class="list-item rating"><%= movie.avg_rating.to_f %></td>
             <td class="list-item"><%= movie.summary %></td>
             <% if current_user && current_user.id == movie.creator_id %>
               <td><%= link_to 'Show', movie %></td>
