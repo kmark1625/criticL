@@ -45,6 +45,13 @@
         <li class="active"><%= link_to "#{genre.name}", genre %></li>
       <% end %>
     </ul>
+
+    <strong>Leaderboard</strong>
+    <ol>
+      <% @users.each_with_index do |user, index| %>
+        <li><%= user.username %> - <%= user.score %> - <%= user.rank %></li>
+      <% end %>
+    </ol>
   </div>
 </div>
 <p><%= will_paginate @movies %></p>
