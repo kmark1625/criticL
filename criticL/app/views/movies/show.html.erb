@@ -32,9 +32,13 @@
     <%= link_to 'Edit', edit_movie_path(@movie) %>  -->
     <br><br>
     <% if logged_in? %>
-      <form action="/movies/<%= @movie.id %>/reviews/new" method="get">
-        <p><button type="submit">Add Review</button></p>
-      </form>
+      <% if current_user.already_reviewed?(@movie) %>
+        <p>Movie Reviewed!</p>
+      <% else %>
+        <form action="/movies/<%= @movie.id %>/reviews/new" method="get">
+          <p><button type="submit">Add Review</button></p>
+        </form>
+      <% end %>
     <% else %>
       <%= link_to "Log in to review", login_path %>
     <% end %>
@@ -68,11 +72,12 @@
       <% @movie.reviews.each do |review| %>
       <div class="movie-display container review-box">
         <h3><%= review.title %></h3>
-        <p>by: <%= review.reviewer.username %></p>
+        <p>by: <%= link_to "#{review.reviewer.username}", user_path(review.reviewer.id)%></p>
         <p>Rating: <%= review.rating %></p>
         <p><%= review.content %></p>
         <% if logged_in? %>
-          <% if current_user.reviews.include?(review) %>
+          <% if current_user.owns_review?(review) %>
+            <%= link_to "Edit" %>  |  <%= link_to "Delete", movie_review_path(@movie, review.id), method: :delete %>
           <% else %>
             <form action="/movies/<%=@movie.id%>/reviews/<%=review.id%>/votes" method="post">
               <input type="hidden" name="value" value="1">
