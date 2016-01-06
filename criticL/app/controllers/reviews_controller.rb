@@ -69,6 +69,7 @@ class ReviewsController < ApplicationController
     @movie = Movie.find_by(id: params[:movie_id])
     @review.destroy
     @movie.calculate_avg
+    @movie.save
     respond_to do |format|
       format.html { redirect_to movie_path(@movie), notice: 'Review was successfully destroyed.' }
       format.json { head :no_content }

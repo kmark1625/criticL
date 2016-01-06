@@ -70,7 +70,7 @@
       <% @movie.reviews.each do |review| %>
       <div class="movie-display container">
         <h3><%= review.title %></h3>
-        <p>by: <%= review.reviewer.username %></p>
+        <p>by: <%= link_to "#{review.reviewer.username}", user_path(review.reviewer.id)%></p>
         <p>Rating: <%= review.rating %></p>
         <p><%= review.content %></p>
         <% if logged_in? %>
