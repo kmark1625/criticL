@@ -50,16 +50,16 @@
   </div>
   <div class="sidebar col-md-2">
     <strong>Genres</strong>
-    <ul>
+    <ul class="genres">
       <% @genres.each do |genre| %>
-        <li class="active"><%= link_to "#{genre.name}", genre %></li>
+        <li class="active genre-name"><%= link_to "#{genre.name}", genre %></li>
       <% end %>
     </ul>
 
     <strong>Leaderboard</strong>
     <ol>
       <% @users.each_with_index do |user, index| %>
-        <li><%= link_to "#{user.username}", user_path(user.id)%>: <%= user.score %> [<%= user.rank %>]</li>
+        <li class="leaderboard"><%= link_to "#{user.username}", user_path(user.id)%>: <%= user.score %> [<%= user.rank %>]</li>
       <% end %>
     </ol>
   </div>

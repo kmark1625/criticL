@@ -76,6 +76,7 @@ img.poster, img.show {
 .table-header {
   margin-left: 20px;
   text-align: center;
+  color: red;
 }
 .list-item{
   max-width: 350px;
@@ -114,4 +115,16 @@ table.mine {
 .panel.review-container{
   background-color: #e3dfe1;
   border: 1px solid #c7bec3;
+}
+.genres {
+  color: red;
+}
+a:link {
+  color: red;
+}
+a:visited {
+  color: red;
+}
+.leaderboard {
+  color: red;
 }
