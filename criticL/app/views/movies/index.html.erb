@@ -47,7 +47,9 @@
     </ul>
   </div>
 </div>
+<p><%= will_paginate @movies %></p>
 <br>
+
 <% if logged_in? %>
   <%= link_to 'New Movie', new_movie_path %>
 <% end %>
