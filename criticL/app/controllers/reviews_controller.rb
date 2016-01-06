@@ -1,16 +1,7 @@
 class ReviewsController < ApplicationController
   before_action :set_review, only: [:show, :edit, :update, :destroy]
 
-  # GET /movies/:movie_id/reviews
-  # GET /movies/:movie_id/reviews.json
-  def index
-    @reviews = Review.all
-  end
 
-  # GET /movies/:movie_id/reviews/1
-  # GET /movies/:movie_id/reviews/1.json
-  def show
-  end
 
   # GET /movies/:movie_id/reviews/new
   def new
