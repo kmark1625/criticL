@@ -6,4 +6,8 @@ module UsersHelper
   def logged_in?
     session[:user_id] ? true : false
   end
+
+  def authenticated?
+    current_user
+  end
 end
