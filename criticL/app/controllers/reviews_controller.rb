@@ -16,10 +16,21 @@ class ReviewsController < ApplicationController
   def new
     @movie = Movie.find_by(id: params[:movie_id])
     @review = Review.new
+    if request.xhr?
+      render :partial => 'form', layout: false, locals: { movie: @movie, review: @review }
+    else
+      if !logged_in?
+        redirect_to login_path
+      elsif current_user.already_reviewed?(@movie)
+        redirect_to movie_path(@movie)
+      end
+    end
   end
 
   # GET /reviews/1/edit
   def edit
+    @movie = Movie.find_by(id: params[:movie_id])
+    @review = Review.find_by(id: params[:id])
   end
 
   # POST /movies/:movie_id/reviews
@@ -59,9 +70,12 @@ class ReviewsController < ApplicationController
   # DELETE /movies/:movie_id/reviews/1
   # DELETE /movies/:movie_id/reviews/1.json
   def destroy
+    @movie = Movie.find_by(id: params[:movie_id])
     @review.destroy
+    @movie.calculate_avg
+    @movie.save
     respond_to do |format|
-      format.html { redirect_to reviews_url, notice: 'Review was successfully destroyed.' }
+      format.html { redirect_to movie_path(@movie), notice: 'Review was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

@@ -15,3 +15,19 @@
 //= require turbolinks
 //= require_tree .
 //= require bootstrap.min
+
+$(document).ready(function() {
+  $("#new-review").on("submit", function(event) {
+    event.preventDefault();
+    var $that = $(this)
+    var url = $(this).attr("action")
+
+    $.ajax({
+      url: url,
+      method: "GET"
+      }).done(function(responseData){
+        var xyz = responseData;
+        $that.append(responseData);
+      });
+  });
+})

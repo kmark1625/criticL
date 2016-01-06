@@ -12,39 +12,44 @@
   </p>
 
   <p>
-    <strong>Rating:</strong>
-    <%= @user.upvotes %>
+    <strong>Score:</strong>
+    <%= @user.score %>
   </p>
+
+  <p>
+    <strong>Rank:</strong>
+    <%= @user.rank %>
+  </p>
+
 
 <div class="row">
 
-  <div class="panel panel-default col-md-6">
+  <div class="panel panel-default col-md-6 review-box">
     <h4>Top Reviews</h4>
     <% if @user.reviews %>
       <% @user.reviews.each do |review| %>
-        <div class="panel panel-default">
+        <div class="panel panel-default review-container">
           <strong><%= link_to "#{review.movie.title}", movie_path(review.movie) %></strong><br>
-          <strong><%= link_to "#{review.title}", movie_review_path(review.movie, review) %></strong>
+          <strong><%= review.title %></strong>
           <p><%= truncate(review.content, length:50)%></p>
           <p>Rating: <%= review.rating %> </p>
+          <p><%= review.total_votes %> people found this review helpful.</p>
+          <% if @user.id == session[:user_id] %>
+            <%= link_to 'Edit', edit_user_path(@user) %>
+          <% end %>
         </div>
       <% end %>
     <% end %>
-
-  <% if @user.id == session[:user_id] %>
-    <%= link_to 'Edit', edit_user_path(@user) %> |
-  <% end %>
-  <%= link_to 'Back', root_path %>
 </div>
 
 
-<div class="panel panel-default col-md-6">
+<div class="panel panel-default col-md-6 review-box">
     <h4>Favorited Movies</h4>
 
     <% if @user.favorited_movies %>
 
       <% @user.favorited_movies.each do |favorite| %>
-        <div class="panel panel-default">
+        <div class="panel panel-default review-container">
 
 
           <table>
