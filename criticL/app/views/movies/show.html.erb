@@ -11,7 +11,7 @@
     </p>
   </div>
 
-  <div class="col-md-7 box">
+  <div class="col-md-7 box movie-info">
     <p id="notice"><%= notice %></p>
 
     <p>
@@ -28,9 +28,9 @@
       <strong>Summary:</strong>
       <%= @movie.summary %>
     </p>
-
-    <%= link_to 'Edit', edit_movie_path(@movie) %> |
-    <%= link_to 'Back', movies_path %><br><br>
+<!--
+    <%= link_to 'Edit', edit_movie_path(@movie) %>  -->
+    <br><br>
     <% if logged_in? %>
       <% if current_user.already_reviewed?(@movie) %>
         <p>Movie Reviewed!</p>
@@ -57,6 +57,8 @@
 
 
   <div class="col-md-1">
+    <%= link_to 'Back', movies_path %>
+
   </div>
 </div>
 <br>
@@ -68,7 +70,7 @@
       <h2>Reviews</h2>
     </div>
       <% @movie.reviews.each do |review| %>
-      <div class="movie-display container">
+      <div class="movie-display container review-box">
         <h3><%= review.title %></h3>
         <p>by: <%= link_to "#{review.reviewer.username}", user_path(review.reviewer.id)%></p>
         <p>Rating: <%= review.rating %></p>

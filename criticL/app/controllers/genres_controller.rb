@@ -11,7 +11,7 @@ class GenresController < ApplicationController
   # GET /genres/1.json
   def show
     @genres = Genre.all
-    @movies = @genre.movies.order(avg_rating: :desc)
+    @movies = @genre.movies.order(avg_rating: :desc).paginate(:page => params[:page], :per_page => 10)
   end
 
 
