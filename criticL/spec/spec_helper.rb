@@ -1,3 +1,4 @@
+require 'omniauth'
 require 'simplecov'
 SimpleCov.start 'rails'
 
