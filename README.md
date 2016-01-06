@@ -4,7 +4,8 @@ A website for movies and reviews.  This site features the ability to search and 
 ## Database of over 8000 popular movies
 ![popular movies](images/image1.png)
 ## Search Functionality
-
+![search](images/image2.png)
 ## Top Reviewers Leaderboard
-
+![top reviews](images/image3.png)
 ## User Profile Featuring Highest Voted Reviews
+![user profile](images/image4.png)
