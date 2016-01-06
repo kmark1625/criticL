@@ -74,15 +74,22 @@ lauren = User.create(username: "lauren", email: "lauren@gmail.com", password: "h
 noah = User.create(username: "noah", email: "noah@gmail.com", password: "hello")
 
 review = kevin.reviews.create(movie_id: 1, rating: 10, content: "I fell in love when watching this movie.", title: "This movie rocked my world")
+  Movie.find(1).calculate_avg
 100.times do
   review.votes.create(value: 1)
 end
 review = kevin.reviews.create(movie_id: 2, rating: 1, content: "This was the first movie I ever saw.  I went on this date with someone and it was also the last date I ever went on. I blame it on the movie.", title: "AVOID AT ALL COSTS")
+  Movie.find(2).calculate_avg
+
 review = noah.reviews.create(movie_id: 3, rating: 5, content: "This was an okay movie", title: "Meh")
+  Movie.find(3).calculate_avg
+
 30.times do
   review.votes.create(value: 1)
 end
 review = max.reviews.create(movie_id: 4, rating: 10, content: "BOOM!", title: "Woah this was an amazing movie")
+  Movie.find(4).calculate_avg
+
 10.times do
   review.votes.create(value: 1)
 end
