@@ -11,7 +11,7 @@
     </p>
   </div>
 
-  <div class="col-md-7 box movie-info">
+  <div id="info-container" class="col-md-7 box movie-info">
     <p id="notice"><%= notice %></p>
 
     <p>
@@ -35,7 +35,7 @@
       <% if current_user.already_reviewed?(@movie) %>
         <p>Movie Reviewed!</p>
       <% else %>
-        <form action="/movies/<%= @movie.id %>/reviews/new" method="get">
+        <form id="new-review" action="/movies/<%= @movie.id %>/reviews/new" method="get">
           <p><button type="submit">Add Review</button></p>
         </form>
       <% end %>
