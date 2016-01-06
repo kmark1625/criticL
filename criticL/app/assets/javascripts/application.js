@@ -17,6 +17,16 @@
 //= require bootstrap.min
 
 $(document).ready(function() {
+  var image_show;
+  image_show = function() {
+    var images = ['brunner.jpg', 'casablanca.jpg', 'shawshank.jpg'];
+  console.log(images);
+   $("body").css('background-image', "url(/images/" + images[Math.floor(Math.random() * images.length)] + ")");
+  }
+
+  $(document).on('page:load', image_show);
+  image_show();
+
   $("#new-review").on("submit", function(event) {
     event.preventDefault();
     var $that = $(this)
@@ -26,7 +36,6 @@ $(document).ready(function() {
       url: url,
       method: "GET"
       }).done(function(responseData){
-        var xyz = responseData;
         $that.append(responseData);
       });
   });

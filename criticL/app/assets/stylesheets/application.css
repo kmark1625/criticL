@@ -24,6 +24,8 @@ body {
 }
 body.background {
   background-color: #efd4bc;
+/*  background-image: url("/images/casablanca.jpg");*/
+  background-repeat: repeat-x;
 }
 .footer {
   position: absolute;
