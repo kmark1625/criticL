@@ -6,9 +6,23 @@ describe ReviewsController do
 
   describe "GET#new" do
     it "renders the new template" do
-      puts review
+      user = User.create!(username: "test", email: "test@test.com", password: "password")
+      session[:user_id] = user.id
       get :new, :movie_id => movie.id
       expect(review).to render_template("new")
+    end
+
+    it "redirects to login page if no current user" do
+      get :new, :movie_id => movie.id
+      expect(movie).to redirect_to(login_path)
+    end
+
+    it "redirects to current movie page if user has already reviewed movie" do
+      user = User.create!(username: "test", email: "test@test.com", password: "password")
+      session[:user_id] = user.id
+      movie.reviews.create(title: "Review", content: "Body", rating: 10, reviewer_id: user.id)
+      get :new, :movie_id => movie.id
+      expect(movie).to redirect_to(movie)
     end
   end
 
