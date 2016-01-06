@@ -33,6 +33,7 @@
     <%= link_to 'Back', movies_path %><br><br>
     <% if logged_in? %>
       <% if current_user.already_reviewed?(@movie) %>
+        <p>Movie Reviewed!</p>
       <% else %>
         <form action="/movies/<%= @movie.id %>/reviews/new" method="get">
           <p><button type="submit">Add Review</button></p>
@@ -74,7 +75,7 @@
         <p><%= review.content %></p>
         <% if logged_in? %>
           <% if current_user.owns_review?(review) %>
-            <%= link_to "Edit" %>  |  <%= link_to "Delete" %>
+            <%= link_to "Edit" %>  |  <%= link_to "Delete", movie_review_path(@movie, review.id), method: :delete %>
           <% else %>
             <form action="/movies/<%=@movie.id%>/reviews/<%=review.id%>/votes" method="post">
               <input type="hidden" name="value" value="1">

@@ -36,8 +36,12 @@ class User < ActiveRecord::Base
   end
 
   def already_reviewed?(movie)
-    movie.reviews.each do |review|
-      self.owns_review?(review)
+    if movie.reviews.any?
+      movie.reviews.each do |review|
+        self.owns_review?(review)
+      end
+    else
+      return false
     end
   end
 

@@ -66,9 +66,11 @@ class ReviewsController < ApplicationController
   # DELETE /movies/:movie_id/reviews/1
   # DELETE /movies/:movie_id/reviews/1.json
   def destroy
+    @movie = Movie.find_by(id: params[:movie_id])
     @review.destroy
+    @movie.calculate_avg
     respond_to do |format|
-      format.html { redirect_to reviews_url, notice: 'Review was successfully destroyed.' }
+      format.html { redirect_to movie_path(@movie), notice: 'Review was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
