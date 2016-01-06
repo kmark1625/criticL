@@ -68,7 +68,7 @@ movie_hash = {"Action"=>action, "Adventure"=>adventure, "Animation"=>animation, 
 end
 
 # Seed users
-kevin = User.create!(username: "kmark", email: "kmark@gmail.com", password: "hello")
+kevin = User.create(username: "kmark", email: "kmark@gmail.com", password: "hello")
 max = User.create(username: "max", email: "max@gmail.com", password: "hello")
 lauren = User.create(username: "lauren", email: "lauren@gmail.com", password: "hello")
 noah = User.create(username: "noah", email: "noah@gmail.com", password: "hello")
