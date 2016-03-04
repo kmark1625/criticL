@@ -38,7 +38,7 @@ movie_hash = {"Action"=>action, "Adventure"=>adventure, "Animation"=>animation, 
 # Fantasy, Foreign, History, Horror, Music, Mystery, Romance, Science Fiction
 # TV Movie, Thriller, War, Western
 
-(1..440).each do |page_num|
+(1..20).each do |page_num| # 440
   movie_page_doc =  Nokogiri::HTML(open("https://www.themoviedb.org/discover/movie?page=#{page_num}&sort_by=popularity.desc&media_type=movie"))
   movie_titles = movie_page_doc.css(".title")
   movie_summaries = movie_page_doc.css(".overview")

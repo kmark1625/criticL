@@ -19,7 +19,8 @@
 $(document).ready(function() {
   var image_show;
   image_show = function() {
-    var images = ['brunner.jpg', 'casablanca.jpg', 'shawshank.jpg'];
+    // var images = ['brunner.jpg', 'casablanca.jpg', 'shawshank.jpg'];
+    var images = ['brunner.jpg'];
   console.log(images);
    $("body").css('background-image', "url(/images/" + images[Math.floor(Math.random() * images.length)] + ")");
   }
